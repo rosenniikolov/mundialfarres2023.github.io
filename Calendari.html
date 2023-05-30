@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MUNDIAL FARRÉS 2023</title>
+  <link rel="stylesheet" type="text/css" href="estils.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>MUNDIAL FARRÉS 2023</h1>
+
+  <div class="calendar">
+    <h2>Juny</h2>
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Event</th>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="9">9</td>
+        <td class="event">PATUM</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="10">10</td>
+        <td class="event">FM SANTPE</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="23">23</td>
+        <td class="event">FM SANT JOAN</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="30">30</td>
+        <td class="event">FM CALLUS</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="calendar">
+    <h2>Juliol</h2>
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Event</th>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="1">1</td>
+        <td class="event">FM SANFRI</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="8">8</td>
+        <td class="event">FM SANT VIÇENC</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="15">15</td>
+        <td class="event">FM SURIA</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="29">29</td>
+        <td class="event">FM VALLS DE TORRUELLA</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="calendar">
+    <h2>Agost</h2>
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Event</th>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="4">4</td>
+        <td class="event">FM SANT SALVADOR DE GUARDIOLA</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="11">11</td>
+        <td class="event">FM CASTELLBELL</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="12">12</td>
+        <td class="event">FM NAVARCLES</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="18">18</td>
+        <td class="event">FM FONOLLOSA</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="19">19</td>
+        <td class="event">FM GIRONELLA</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="20">20</td>
+        <td class="event">FM AVINYO</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="26">26</td>
+        <td class="event">FM NAVÀS</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="27">27</td>
+        <td class="event">FM NAVÀS</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="calendar">
+    <h2>Setembre</h2>
+    <table>
+      <tr>
+        <th>Dia</th>
+        <th>Event</th>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="1">1</td>
+        <td class="event">SETMANA JOVE BALSARENY</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="2">2</td>
+        <td class="event">SETMANA JOVE BALSARENY</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="8">8</td>
+        <td class="event">FM SOLSONA</td>
+      </tr>
+      <tr>
+        <td class="completed" onclick="toggleCompletion(this)" data-date="9">9</td>
+        <td class="event">FM CARDONA</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    // Función para marcar/desmarcar casillas y guardar estado en el almacenamiento local
+    function toggleCompletion(element) {
+      element.classList.toggle("completed");
+      if (element.innerHTML === "Fet") {
+        element.innerHTML = element.getAttribute("data-date");
+        localStorage.removeItem(element.getAttribute("data-date"));
+      } else {
+        element.innerHTML = "Fet";
+        localStorage.setItem(element.getAttribute("data-date"), "completed");
+      }
+    }
+
+    // Recuperar el estado guardado del almacenamiento local al cargar la página
+    window.addEventListener("DOMContentLoaded", function () {
+      var cells = document.getElementsByClassName("completed");
+      for (var i = 0; i < cells.length; i++) {
+        var date = cells[i].getAttribute("data-date");
+        if (localStorage.getItem(date) === "completed") {
+          cells[i].innerHTML = "Fet";
+        }
+      }
+    });
+  </script>
+</body>
+</html>
